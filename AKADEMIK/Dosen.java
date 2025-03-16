@@ -1,12 +1,10 @@
 package AKADEMIK;
 
-public class Dosen extends Orang {
-    private String nip;
+public class Dosen extends Pegawai {
     private String prodi;
 
-    public Dosen(String nama, String alamat, String email, String nip, String prodi) {
-        super(nama, alamat, email);
-        this.nip = nip;
+    public Dosen(String nip, String jabatan, String nama, String alamat, String email, String prodi) {
+        super(nip, jabatan, nama, alamat, email);
         this.prodi = prodi;
     }
 
@@ -35,6 +33,7 @@ public class Dosen extends Orang {
         System.out.printf("\n===== INFORMASI DOSEN =====\n");
         super.printInfo();
         System.out.printf("| %-15s | %-26s |\n", "NIP", getNip());
+        System.out.printf("| %-15s | %-26s |\n", "Jabatan", getJabatan());
         System.out.printf("| %-15s | %-26s |\n", "Prodi", getProdi());
         System.out.printf("+-----------------+----------------------------+\n");
     }
