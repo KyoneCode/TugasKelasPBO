@@ -5,6 +5,8 @@ public class Orang {
     protected String alamat;
     protected String email;
 
+    public Orang(){}
+
     public Orang(String nama, String alamat, String email) {
         this.nama = nama;
         this.alamat = alamat;
