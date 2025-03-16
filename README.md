@@ -1,2 +1,2 @@
 # TugasKelasPBO
-adalah repo berisi tugas untuk kelas PBO
+adalah repo berisi tugas untuk kelas kelompok PBO
