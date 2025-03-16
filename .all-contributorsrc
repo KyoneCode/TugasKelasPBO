@@ -1,4 +1,8 @@
 {
-  "projectName": "TugasKelasPBO",
-  "projectOwner": "dartyourt"
+  "projectName": "all-contributors",
+  "projectOwner": "all-contributors",
+  "files": [
+    "README.md"
+  ]
+
 }
