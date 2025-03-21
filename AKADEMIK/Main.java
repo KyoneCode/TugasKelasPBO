@@ -1,4 +1,4 @@
-package AKADEMIK;
+// package AKADEMIK;
 
 public class Main {
     public static void main(String[] args) {
@@ -10,7 +10,7 @@ public class Main {
         fakTeknik.tambahProdi(prodiInformatika);
 
         // Buat Dosen
-        Dosen dosen1 = new Dosen("Dr. Andi", "Jl. Merdeka", "andi@kampus.ac.id", "123456", "Profesor");
+        Dosen dosen1 = new Dosen("12345", "Dosen Tetap", "Andi", "Jl. Merdeka No. 25", "Andi@gmail.com", "Informatika");
 
         // Buat Mata Kuliah
         MataKuliah mk1 = new MataKuliah("IF101", "Pemrograman Java", 3);

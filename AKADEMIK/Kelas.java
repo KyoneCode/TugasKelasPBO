@@ -1,4 +1,4 @@
-package AKADEMIK;
+// package AKADEMIK;
 import java.util.ArrayList;
 
 public class Kelas {
@@ -19,8 +19,7 @@ public class Kelas {
 
     public void tambahMahasiswa(Mahasiswa mahasiswa) {
         if (daftarMahasiswa.size() >= kapasitasMaksimal) {
-            System.out.println("Kelas penuh! Tidak bisa menambahkan mahasiswa lagi.");
-            return;
+            throw new IllegalStateException("Kelas penuh! Tidak bisa menambahkan mahasiswa lagi.");
         }
         daftarMahasiswa.add(mahasiswa);
         System.out.println(mahasiswa.getNama() + " berhasil masuk kelas " + kode);
