@@ -1,4 +1,4 @@
-package AKADEMIK;
+// package AKADEMIK;
 
 public class Kendaraan {
     private String jenis; // Jenis kendaraan (Mobil atau Motor)

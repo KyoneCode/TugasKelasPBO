@@ -1,4 +1,4 @@
-package AKADEMIK;
+// package AKADEMIK;
 
 public class Dosen extends Pegawai {
     protected String prodi;

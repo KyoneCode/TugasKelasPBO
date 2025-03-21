@@ -1,4 +1,4 @@
-package AKADEMIK;
+// package AKADEMIK;
 
 import java.util.ArrayList;
 
@@ -45,8 +45,7 @@ public class Mahasiswa extends Orang {
 
     public void addMatkul(MataKuliah mk) {
         if (getJumlahSks() + mk.getSks() > sksMaksimal) {
-            System.out.println("Gagal menambahkan " + mk.getNama() + ". Total SKS melebihi batas (" + sksMaksimal + " SKS).");
-            return;
+            throw new SksMelebihiBatasException("Gagal menambahkan " + mk.getNama() + ". Total SKS melebihi batas (" + sksMaksimal + " SKS).");
         }
         listMatkul.add(mk);
         System.out.println("Mata Kuliah " + mk.getNama() + " berhasil ditambahkan untuk " + nama);

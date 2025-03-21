@@ -1,4 +1,4 @@
-package AKADEMIK;
+// package AKADEMIK;
 
 public class Tendik extends Pegawai {
     protected String bidang;

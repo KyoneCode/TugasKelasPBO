@@ -1,4 +1,4 @@
-package AKADEMIK;
+// package AKADEMIK;
 
 public class MataKuliah {
     private String idMatkul;
