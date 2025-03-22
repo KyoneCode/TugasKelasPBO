@@ -58,25 +58,33 @@ public class Irs{
     // }
 
     public void cetakIRS() {
-        System.out.println("=====================================");
-        System.out.println("         INFORMASI IRS MAHASISWA     ");
-        System.out.println("=====================================");
-        System.out.println("Nama         : " + mahasiswa.getNama());
-        System.out.println("NIM          : " + mahasiswa.getNim());
+        System.out.println("===== INFORMASI IRS MAHASISWA =====");
+        System.out.println("+---------------------------------------------+");
+        System.out.printf("| %-10s : %-30s |\n", "Nama", mahasiswa.getNama());
+        System.out.printf("| %-10s : %-30s |\n", "NIM", mahasiswa.getNim());
+        System.out.println("+---------------------------------------------+");
+    
         if (mataKuliahList.isEmpty()) {
-            System.out.println("Belum ada mata kuliah yang diambil.");
+            System.out.println("|           Belum ada mata kuliah            |");
+            System.out.println("+---------------------------------------------+");
         } else {
-            System.out.println("Mata Kuliah yang Diambil:");
-            System.out.println("-------------------------------------");
-            System.out.printf("| %-5s | %-30s | %-4s |\n", "No", "Nama Mata Kuliah", "SKS");
-            System.out.println("-------------------------------------");
+            System.out.println("+------+--------------------------------+------+" );
+            System.out.printf("| %-4s | %-30s | %-4s |\n", "No", "Nama Mata Kuliah", "SKS");
+            System.out.println("+------+--------------------------------+------+" );
+    
             int no = 1;
+            int totalSks = 0;
             for (MataKuliah mk : mataKuliahList) {
-                System.out.printf("| %-5d | %-30s | %-4d |\n", no++, mk.getNama(), mk.getSks());
+                System.out.printf("| %-4d | %-30s | %-4d |\n", no++, mk.getNama(), mk.getSks());
+                totalSks += mk.getSks();
             }
-            System.out.println("-------------------------------------");
+            
+            System.out.println("+------+--------------------------------+------+" );
+            System.out.printf("| %-4s | %-30s | %-4d |\n", "", "Total SKS", totalSks);
+            System.out.println("+------+--------------------------------+------+" );
         }
     }
+    
 
     public int getJumlahSks() {
         if (mataKuliahList == null || mataKuliahList.isEmpty()) {
