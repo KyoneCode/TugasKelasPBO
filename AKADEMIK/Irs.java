@@ -50,10 +50,31 @@ public class Irs{
         }         
     }
     
+    // public void cetakIRS() {
+    //     System.out.println("IRS Mahasiswa: " + mahasiswa.getNama());
+    //     for (MataKuliah mk : mataKuliahList) {
+    //         System.out.println("Mata Kuliah: " + mk.getNama());
+    //     }
+    // }
+
     public void cetakIRS() {
-        System.out.println("IRS Mahasiswa: " + mahasiswa.getNama());
-        for (MataKuliah mk : mataKuliahList) {
-            System.out.println("Mata Kuliah: " + mk.getNama());
+        System.out.println("=====================================");
+        System.out.println("         INFORMASI IRS MAHASISWA     ");
+        System.out.println("=====================================");
+        System.out.println("Nama         : " + mahasiswa.getNama());
+        System.out.println("NIM          : " + mahasiswa.getNim());
+        if (mataKuliahList.isEmpty()) {
+            System.out.println("Belum ada mata kuliah yang diambil.");
+        } else {
+            System.out.println("Mata Kuliah yang Diambil:");
+            System.out.println("-------------------------------------");
+            System.out.printf("| %-5s | %-30s | %-4s |\n", "No", "Nama Mata Kuliah", "SKS");
+            System.out.println("-------------------------------------");
+            int no = 1;
+            for (MataKuliah mk : mataKuliahList) {
+                System.out.printf("| %-5d | %-30s | %-4d |\n", no++, mk.getNama(), mk.getSks());
+            }
+            System.out.println("-------------------------------------");
         }
     }
 
