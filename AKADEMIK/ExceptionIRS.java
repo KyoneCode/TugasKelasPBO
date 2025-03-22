@@ -1,4 +1,4 @@
-public class ExceptionIRS extends Exception {
+public class ExceptionIRS extends RuntimeException {
     public ExceptionIRS(String message) {
         super(message);
     }

@@ -1,14 +1,13 @@
 // package AKADEMIK;
 
-import java.util.ArrayList;
-
 public class Mahasiswa extends Orang {
     // atribut
     private String nim;
     private int angkatan;
     private String prodi;
-    private ArrayList<MataKuliah> listMatkul;
     private Dosen dosenWali;
+    private Irs irs;
+    private Khs khs;
     private final int sksMaksimal = 24;
 
     // konstruktor
@@ -20,7 +19,8 @@ public class Mahasiswa extends Orang {
         this.nim = NIM;
         this.angkatan = angkatan;
         this.prodi = prodi;
-        this.listMatkul = new ArrayList<>();
+        this.irs = new Irs();
+        this.khs = new Khs();
     }
 
     // getter
@@ -44,6 +44,14 @@ public class Mahasiswa extends Orang {
         return dosenWali;
     }
 
+    public Irs getIrs(){
+        return irs;
+    }
+
+    public Khs getKhs(){
+        return khs;
+    }
+
     // setter
     public void setNim(String nim){
         this.nim = nim;
@@ -57,6 +65,14 @@ public class Mahasiswa extends Orang {
         this.dosenWali = dosenWali;
     }
 
+    public void setIrs(Irs irs) {
+        this.irs = irs;
+    }
+
+    public void setKhs(Khs khs) {
+        this.khs = khs;
+    }
+
     // // method lain
     // public void addMatkul(MataKuliah mk) {
     //     if (getJumlahSks() + mk.getSks() > sksMaksimal) {
@@ -65,14 +81,6 @@ public class Mahasiswa extends Orang {
     //     listMatkul.add(mk);
     //     System.out.println("Mata Kuliah " + mk.getNama() + " berhasil ditambahkan untuk " + nama);
     // }
-
-    public int getJumlahSks() {
-        int totalSks = 0;
-        for (MataKuliah mk : listMatkul) {
-            totalSks += mk.getSks();
-        }
-        return totalSks;
-    }
 
     @Override
     public void printInfo() {
@@ -84,7 +92,7 @@ public class Mahasiswa extends Orang {
         System.out.printf("| %-15s | %-26s |\n", "NIM", nim);
         System.out.printf("| %-15s | %-26s |\n", "Angkatan", angkatan);
         System.out.printf("| %-15s | %-26s |\n", "Program Studi", prodi);
-        System.out.printf("| %-15s | %-26s |\n", "Total SKS", getJumlahSks() + "/" + sksMaksimal);
+        System.out.printf("| %-15s | %-26s |\n", "Total SKS", getIrs().getJumlahSks() + "/" + sksMaksimal);
         System.out.printf("+-----------------+----------------------------+\n");
     }
 }

@@ -21,51 +21,56 @@ public class Main {
         fakSains.printInfo();
 
         // Buat Dosen
-        Dosen dosen1 = new Dosen("12345", "Dosen Tetap", "Andi", "Jl. Merdeka No. 25", "Andi@gmail.com", "Informatika");
+        Dosen dosen1 = new Dosen("12345", "Dosen Tetap", "Andi", "Jl. Merdeka No. 25", "Andi@gmail.com", "Fisika");
         dosen1.printInfo();
 
-        
+        Dosen dosen2 = new Dosen("44553378", "Dosen Tetap", "Rinaldi Munir", "Jl. Mawar No. 56", "RinaldiMunir@yahoo.com", "Informatika");
+        dosen2.printInfo();
 
-    //     // Buat Mata Kuliah
-    //     MataKuliah mk1 = new MataKuliah("IF101", "Pemrograman Java", 3);
-    //     MataKuliah mk2 = new MataKuliah("IF102", "Struktur Data", 3);
-    //     prodiInformatika.tambahMataKuliah(mk1);
-    //     prodiInformatika.tambahMataKuliah(mk2);
+        // Buat Mata Kuliah
+        MataKuliah mk1 = new MataKuliah("IF101", "Pemrograman Java", 3);
+        MataKuliah mk2 = new MataKuliah("IF102", "Struktur Data", 3);
+        prodiInformatika.tambahMataKuliah(mk1);
+        prodiInformatika.tambahMataKuliah(mk2);
+        mk1.printInfo();
+        mk2.printInfo();
 
-    //     // Buat Kelas
-    //     Kelas kelas1 = new Kelas("IF101-01", "Senin 08:00-10:00", mk1, dosen1);
-    //     Kelas kelas2 = new Kelas("IF102-02", "Rabu 10:00-12:00", mk2, dosen1);
+        // Buat Kelas
+        Kelas kelas1 = new Kelas("IF101-01", "Senin 08:00-10:00", mk1, dosen1);
+        Kelas kelas2 = new Kelas("IF102-02", "Rabu 10:00-12:00", mk2, dosen1);
+        kelas1.printInfo();
+        kelas2.printInfo();
 
-    //     // Buat Mahasiswa
-    //     Mahasiswa mhs1 = new Mahasiswa("Budi", "Jl. Mawar", "budi@student.ac.id", "22001", 2022, "Informatika");
-    //     Mahasiswa mhs2 = new Mahasiswa("Ani", "Jl. Melati", "ani@student.ac.id", "22002", 2022, "Informatika");
+        // Buat Mahasiswa
+        Mahasiswa mhs1 = new Mahasiswa("Budi", "Jl. Mawar", "budi@student.ac.id", "22001", 2022, "Informatika");
+        Mahasiswa mhs2 = new Mahasiswa("Ani", "Jl. Melati", "ani@student.ac.id", "22002", 2022, "Informatika");
+        mhs1.printInfo();
+        mhs2.printInfo();
 
-    //     // Set Dosen Wali
-    //     mhs1.setDosenWali(dosen1);
-    //     mhs2.setDosenWali(dosen1);
+        // Set Dosen Wali
+        mhs1.setDosenWali(dosen2);
+        mhs2.setDosenWali(dosen2);
 
-    //     // Mahasiswa mendaftar ke kelas
-    //     kelas1.tambahMahasiswa(mhs1);
-    //     kelas1.tambahMahasiswa(mhs2);
-    //     kelas2.tambahMahasiswa(mhs2);
+        //Mahasiswa mengisi Irs
+        Irs irsMhs1 = new Irs(mhs1);
+        irsMhs1.tambahMataKuliah(mk1);
+        mhs1.setIrs(irsMhs1);
+        mhs1.printInfo();
+        System.out.println(mhs1.getIrs().getJumlahSks());
+        System.out.println(mhs1.getSksMaksimal());
+        irsMhs1.tambahMataKuliah(mk2);
+        mhs1.printInfo();
 
-    //     // Cetak Informasi Fakultas & Program Studi
-    //     fakTeknik.printInfo();
-    //     prodiInformatika.printInfo();
+        // Mahasiswa mendaftar ke kelas
+        kelas1.tambahMahasiswa(mhs1);
+        kelas1.tambahMahasiswa(mhs2);
+        kelas2.tambahMahasiswa(mhs2);
+        kelas1.printInfo();
+        kelas2.printInfo();
 
-    //     // Cetak Informasi Mata Kuliah
-    //     mk1.printInfo();
-    //     mk2.printInfo();
+        mhs1.getIrs().cetakIRS();
 
-    //     // Cetak Informasi Kelas
-    //     kelas1.printInfo();
-    //     kelas2.printInfo();
-
-    //     // Cetak Informasi Mahasiswa
-    //     mhs1.printInfo();
-    //     mhs2.printInfo();
-
-    //     // Cetak Informasi Dosen
-    //     dosen1.printInfo();
+        //Print Info Mahasiswa
+        mhs1.printInfo();
     }
 }

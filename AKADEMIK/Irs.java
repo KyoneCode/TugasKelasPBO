@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Irs {
+public class Irs{
     private Mahasiswa mahasiswa;
     private List<MataKuliah> mataKuliahList;
     
@@ -14,7 +14,7 @@ public class Irs {
         this.mahasiswa = mahasiswa;
         this.mataKuliahList = new ArrayList<>();
     }
-
+ 
     // getter
     public List<MataKuliah> getMataKuliahList() {
         return new ArrayList<>(mataKuliahList);
@@ -35,14 +35,19 @@ public class Irs {
     
     // method yang lain
     public void tambahMataKuliah(MataKuliah mataKuliah) throws ExceptionIRS{
-        if (mataKuliahList.contains(mataKuliah)) {
-            throw new ExceptionIRS("Mata Kuliah sudah ditembahkan");
+        if (mataKuliahList == null || mataKuliahList.isEmpty()) { 
+            mataKuliahList.add(mataKuliah);
         }
+        else { 
+            if (mataKuliahList.contains(mataKuliah)) {
+                throw new ExceptionIRS("Mata Kuliah sudah ditembahkan");
+            }
 
-        if (mahasiswa.getJumlahSks() + mataKuliah.getSks() > mahasiswa.getSksMaksimal()){
-            throw new ExceptionIRS("Gagal menambahkan " + mataKuliah.getNama() + ". Total SKS melebihi batas (" + mahasiswa.getSksMaksimal() + " SKS).");
-        }
-        mataKuliahList.add(mataKuliah);
+            if (mahasiswa.getIrs().getJumlahSks() + mataKuliah.getSks() > mahasiswa.getSksMaksimal()){
+                throw new SksMelebihiBatasException("Jatah SKS sudah penuh");
+            }
+            mataKuliahList.add(mataKuliah);
+        }         
     }
     
     public void cetakIRS() {
@@ -50,5 +55,18 @@ public class Irs {
         for (MataKuliah mk : mataKuliahList) {
             System.out.println("Mata Kuliah: " + mk.getNama());
         }
+    }
+
+    public int getJumlahSks() {
+        if (mataKuliahList == null || mataKuliahList.isEmpty()) {
+            return 0;
+        }
+        int totalSks = 0;
+        for (MataKuliah mk : mataKuliahList) {
+            if (mk != null) {
+                totalSks += mk.getSks();
+            }
+        }
+        return totalSks;
     }
 }

@@ -77,12 +77,12 @@ public class Kelas {
 
     public void printInfo() {
         System.out.printf("\n===== INFORMASI KELAS =====\n");
-        System.out.printf("+-----------------+----------------------------+\n");
-        System.out.printf("| %-15s | %-26s |\n", "Kode Kelas", kode);
-        System.out.printf("| %-15s | %-26s |\n", "Jadwal", jadwal);
-        System.out.printf("| %-15s | %-26s |\n", "Mata Kuliah", mataKuliah.getNama());
-        System.out.printf("| %-15s | %-26s |\n", "Dosen Pengampu", dosenPengampu.getNama());
-        System.out.printf("| %-15s | %-26s |\n", "Jumlah Mahasiswa", daftarMahasiswa.size() + "/" + kapasitasMaksimal);
+        System.out.printf("+-----------------+-----------------------------+\n");
+        System.out.printf("| %-16s | %-26s |\n", "Kode Kelas", kode);
+        System.out.printf("| %-16s | %-26s |\n", "Jadwal", jadwal);
+        System.out.printf("| %-16s | %-26s |\n", "Mata Kuliah", mataKuliah.getNama());
+        System.out.printf("| %-16s | %-26s |\n", "Dosen Pengampu", dosenPengampu.getNama());
+        System.out.printf("| %-16s | %-26s |\n", "Jumlah Mahasiswa", daftarMahasiswa.size() + "/" + kapasitasMaksimal);
         System.out.printf("+-----------------+----------------------------+\n");
 
         if (daftarMahasiswa.isEmpty()) {
