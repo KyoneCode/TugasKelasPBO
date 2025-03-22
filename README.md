@@ -8,7 +8,7 @@ Sistem ini adalah **simulasi sistem perkuliahan di universitas** yang mencakup:
 - Pelaksanaan perkuliahan  
 - Pencatatan nilai dalam KHS (Kartu Hasil Studi)  
 
-Proyek ini dikembangkan menggunakan **Java** dengan menerapkan **Object-Oriented Programming (OOP)** serta **exception handling** untuk memastikan keakuratan data akademik.
+Proyek ini dikembangkan menggunakan **Java** dengan menerapkan **Object-Oriented Programming (OOP)**, **Assertion**, **Aggregation**, serta **exception handling**.
 
 ---
 
