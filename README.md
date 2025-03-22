@@ -23,7 +23,7 @@ Proyek ini dikembangkan menggunakan **Java** dengan menerapkan **Object-Oriented
 ---
 
 ## 📌 Class Diagram UML  
-
+![uml](https://github.com/dartyourt/TugasKelasPBO/blob/main/DIAGRAM/UML%20DIAGRAM%20CLASS.png)
 
 ---
 
