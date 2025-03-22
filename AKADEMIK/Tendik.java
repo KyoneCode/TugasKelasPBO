@@ -26,7 +26,8 @@ public class Tendik extends Pegawai {
 
     @Override
     public void printInfo() {
-        super.printInfo(); 
+        System.out.printf("\n=============== INFORMASI TENDIK ================\n");
+        super.printInfo();
         System.out.printf("| %-15s | %-26s |\n", "Bidang", bidang);
         System.out.printf("+-----------------+----------------------------+\n");
     }
