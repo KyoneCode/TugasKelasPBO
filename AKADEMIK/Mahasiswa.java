@@ -92,6 +92,7 @@ public class Mahasiswa extends Orang {
         System.out.printf("| %-15s | %-26s |\n", "NIM", nim);
         System.out.printf("| %-15s | %-26s |\n", "Angkatan", angkatan);
         System.out.printf("| %-15s | %-26s |\n", "Program Studi", prodi);
+        System.out.printf("| %-15s | %-26s |\n", "Dosen Wali", dosenWali);
         System.out.printf("| %-15s | %-26s |\n", "Total SKS", getIrs().getJumlahSks() + "/" + sksMaksimal);
         System.out.printf("+-----------------+----------------------------+\n");
     }

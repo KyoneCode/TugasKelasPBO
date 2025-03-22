@@ -27,6 +27,10 @@ public class Main {
         Dosen dosen2 = new Dosen("44553378", "Dosen Tetap", "Rinaldi Munir", "Jl. Mawar No. 56", "RinaldiMunir@yahoo.com", "Informatika");
         dosen2.printInfo();
 
+        // Buat Tendik
+        Tendik tendik1 = new Tendik("432987", "Tendik", "Sumargo", "Jl. Pondok Gede No. 41", "Sumargo12@gmail.com", "Kemahasiswaan");
+        tendik1.printInfo();
+
         // Buat Mata Kuliah
         MataKuliah mk1 = new MataKuliah("IF101", "Pemrograman Java", 3);
         MataKuliah mk2 = new MataKuliah("IF102", "Struktur Data", 3);
@@ -56,8 +60,8 @@ public class Main {
         irsMhs1.tambahMataKuliah(mk1);
         mhs1.setIrs(irsMhs1);
         mhs1.printInfo();
-        System.out.println(mhs1.getIrs().getJumlahSks());
-        System.out.println(mhs1.getSksMaksimal());
+        // System.out.println(mhs1.getIrs().getJumlahSks());
+        // System.out.println(mhs1.getSksMaksimal());
         irsMhs1.tambahMataKuliah(mk2);
         mhs1.printInfo();
 
@@ -68,9 +72,24 @@ public class Main {
         kelas1.printInfo();
         kelas2.printInfo();
 
-        mhs1.getIrs().cetakIRS();
-
         //Print Info Mahasiswa
         mhs1.printInfo();
+
+        //Cetak IRS 
+        mhs1.getIrs().cetakIRS();
+
+        //buat KHS
+        Khs khsMhs1 = new Khs(irsMhs1);
+
+        //Tambahkan Nilai ke KHS
+        khsMhs1.tambahNilai(mk1, 'A');
+        khsMhs1.tambahNilai(mk1, 'Y');
+
+        // Cetak KHS mahasiswa
+        khsMhs1.cetakKHS();
+
+        //End Main
+        System.out.println("\nIni sudah selesai");
+        
     }
 }
