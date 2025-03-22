@@ -24,6 +24,8 @@ public class Main {
         Dosen dosen1 = new Dosen("12345", "Dosen Tetap", "Andi", "Jl. Merdeka No. 25", "Andi@gmail.com", "Informatika");
         dosen1.printInfo();
 
+        
+
     //     // Buat Mata Kuliah
     //     MataKuliah mk1 = new MataKuliah("IF101", "Pemrograman Java", 3);
     //     MataKuliah mk2 = new MataKuliah("IF102", "Struktur Data", 3);
