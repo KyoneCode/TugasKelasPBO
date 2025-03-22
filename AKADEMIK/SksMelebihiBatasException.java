@@ -1,4 +1,4 @@
-public class SksMelebihiBatasException extends RuntimeException {
+public class SksMelebihiBatasException extends ExceptionIRS{
     public SksMelebihiBatasException(String message) {
         super(message);
     }

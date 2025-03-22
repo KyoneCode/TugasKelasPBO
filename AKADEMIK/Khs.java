@@ -1,48 +1,42 @@
+import java.util.ArrayList;
+
 public class Khs {
-    private Mahasiswa mahasiswa;
-    private List<MataKuliah> mataKuliahList;
-    private List<Character> nilaiList;
+    // atribut
+    private Irs IRS;
+    private ArrayList<Character> nilaiList;
     
-    public Khs(Mahasiswa mahasiswa) {
-        this.mahasiswa = mahasiswa;
-        this.mataKuliahList = new ArrayList<>();
+    // konstruktor
+    public Khs() {
+        this.IRS = new Irs();
         this.nilaiList = new ArrayList<>();
     }
-    
-    public void tambahMataKuliah(MataKuliah mataKuliah, char nilai){
-        mataKuliahList.add(mataKuliah);
-        nilaiList.add(nilai);
-    }
-    
-    public void cetakKHS() {
-        System.out.println("KHS Mahasiswa: " + mahasiswa.getNama());
-        for (int i = 0; i < mataKuliahList.size(); i++) {
-            System.out.println("Mata Kuliah: " + mataKuliahList.get(i).getNama() + ", Nilai: " + nilaiList.get(i));
-        }
-    }
-    
-    // Getter dan Setter
-    public Mahasiswa getMahasiswa() {
-        return mahasiswa;
+
+    // getter dan setter
+    public Irs getIRS() {
+        return IRS;
     }
 
-    public void setMahasiswa(Mahasiswa mahasiswa) {
-        this.mahasiswa = mahasiswa;
+    public void setIRS(Irs IRS) {
+        this.IRS = IRS;
     }
 
-    public List<MataKuliah> getMataKuliahList() {
-        return mataKuliahList;
-    }
-
-    public void setMataKuliahList(List<MataKuliah> mataKuliahList) {
-        this.mataKuliahList = mataKuliahList;
-    }
-
-    public List<Character> getNilaiList() {
+    public ArrayList<Character> getNilaiList() {
         return nilaiList;
     }
 
-    public void setNilaiList(List<Character> nilaiList) {
+    public void setNilaiList(ArrayList<Character> nilaiList) {
         this.nilaiList = nilaiList;
+    }
+
+    public Khs(Irs irs) {
+        this.IRS = irs;
+        this.nilaiList = new ArrayList<>();
+    }
+    
+    public void cetakKHS() {
+        System.out.println("KHS Mahasiswa: " + IRS.getMahasiswa().getNama());
+        for (int i = 0; i < IRS.getMataKuliahList().size(); i++) {
+            System.out.println("Mata Kuliah: " + IRS.getMataKuliahList().get(i).getNama() + ", Nilai: " + nilaiList.get(i));
+        }
     }
 }

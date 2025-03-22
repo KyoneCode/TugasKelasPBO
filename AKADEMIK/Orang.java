@@ -5,7 +5,12 @@ public class Orang {
     protected String alamat;
     protected String email;
 
-    public Orang(){}
+    // Konstruktor
+    public Orang(){
+        nama = "";
+        alamat = "";
+        email = "";
+    }
 
     public Orang(String nama, String alamat, String email) {
         this.nama = nama;
@@ -13,6 +18,7 @@ public class Orang {
         this.email = email;
     }
 
+    // getter
     public String getNama() {
         return nama;
     }
@@ -25,6 +31,7 @@ public class Orang {
         return email;
     }
 
+    // setter
     public void setNama(String nama) {
         this.nama = nama;
     }
@@ -36,6 +43,7 @@ public class Orang {
     public void setEmail(String email) {
         this.email = email;
     }
+
 
     public void printInfo() {
         System.out.printf("+-----------------+----------------------------+\n");

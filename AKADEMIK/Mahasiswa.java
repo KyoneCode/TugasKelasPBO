@@ -1,89 +1,98 @@
 // package AKADEMIK;
 
-import java.util.ArrayList;
-
 public class Mahasiswa extends Orang {
+    // atribut
     private String nim;
     private int angkatan;
     private String prodi;
-    private ArrayList<MataKuliah> listMatkul;
     private Dosen dosenWali;
-    private Kendaraan kendaraan;
+    private Irs irs;
+    private Khs khs;
     private final int sksMaksimal = 24;
 
+    // konstruktor
+    public Mahasiswa(){
+
+    }
     public Mahasiswa(String nama, String alamat, String email, String NIM, int angkatan, String prodi) {
         super(nama, alamat, email);
         this.nim = NIM;
         this.angkatan = angkatan;
         this.prodi = prodi;
-        this.listMatkul = new ArrayList<>();
+        this.irs = new Irs();
+        this.khs = new Khs();
+    }
+
+    // getter
+    public String getNim() {
+        return nim;
     }
 
     public int getAngkatan() {
         return angkatan;
     }
 
-    public void setAngkatan(int angkatan) {
-        this.angkatan = angkatan;
-    }
-
-    public String getNim() {
-        return nim;
-    }
-
     public String getProdi() {
         return prodi;
+    }
+
+    public int getSksMaksimal(){
+        return sksMaksimal;
+    }
+
+    public Dosen getDosenWali(){
+        return dosenWali;
+    }
+
+    public Irs getIrs(){
+        return irs;
+    }
+
+    public Khs getKhs(){
+        return khs;
+    }
+
+    // setter
+    public void setNim(String nim){
+        this.nim = nim;
+    }
+
+    public void setAngkatan(int angkatan) {
+        this.angkatan = angkatan;
     }
 
     public void setDosenWali(Dosen dosenWali) {
         this.dosenWali = dosenWali;
     }
 
-    public void setKendaraan(Kendaraan kendaraan) {
-        this.kendaraan = kendaraan;
+    public void setIrs(Irs irs) {
+        this.irs = irs;
     }
 
-    public void addMatkul(MataKuliah mk) {
-        if (getJumlahSks() + mk.getSks() > sksMaksimal) {
-            throw new SksMelebihiBatasException("Gagal menambahkan " + mk.getNama() + ". Total SKS melebihi batas (" + sksMaksimal + " SKS).");
-        }
-        listMatkul.add(mk);
-        System.out.println("Mata Kuliah " + mk.getNama() + " berhasil ditambahkan untuk " + nama);
+    public void setKhs(Khs khs) {
+        this.khs = khs;
     }
 
-    public int getJumlahSks() {
-        int totalSks = 0;
-        for (MataKuliah mk : listMatkul) {
-            totalSks += mk.getSks();
-        }
-        return totalSks;
-    }
+    // // method lain
+    // public void addMatkul(MataKuliah mk) {
+    //     if (getJumlahSks() + mk.getSks() > sksMaksimal) {
+    //         throw new SksMelebihiBatasException("Gagal menambahkan " + mk.getNama() + ". Total SKS melebihi batas (" + sksMaksimal + " SKS).");
+    //     }
+    //     listMatkul.add(mk);
+    //     System.out.println("Mata Kuliah " + mk.getNama() + " berhasil ditambahkan untuk " + nama);
+    // }
 
+    @Override
     public void printInfo() {
         System.out.printf("\n===== INFORMASI MAHASISWA =====\n");
         System.out.printf("+-----------------+----------------------------+\n");
-        System.out.printf("| %-15s | %-26s |\n", "Nama", getNama());
-        System.out.printf("| %-15s | %-26s |\n", "NIM", getNim());
-        System.out.printf("| %-15s | %-26s |\n", "Prodi", getProdi());
-        System.out.printf("| %-15s | %-26s |\n", "Angkatan", getAngkatan());
-        System.out.printf("| %-15s | %-26s |\n", "Dosen Wali", (dosenWali != null ? dosenWali.getNama() : "Belum ditentukan"));
-        System.out.printf("| %-15s | %-26s |\n", "Kendaraan", (kendaraan != null ? kendaraan.getJenis() + " " + kendaraan.getNoPlat() : "Tidak memiliki kendaraan"));
+        System.out.printf("| %-15s | %-26s |\n", "Nama", nama);
+        System.out.printf("| %-15s | %-26s |\n", "Alamat", alamat);
+        System.out.printf("| %-15s | %-26s |\n", "Email", email);
+        System.out.printf("| %-15s | %-26s |\n", "NIM", nim);
+        System.out.printf("| %-15s | %-26s |\n", "Angkatan", angkatan);
+        System.out.printf("| %-15s | %-26s |\n", "Program Studi", prodi);
+        System.out.printf("| %-15s | %-26s |\n", "Total SKS", getIrs().getJumlahSks() + "/" + sksMaksimal);
         System.out.printf("+-----------------+----------------------------+\n");
-
-        if (listMatkul.isEmpty()) {
-            System.out.println("| Mata Kuliah yang diambil: Tidak ada              |");
-        } else {
-            System.out.println("\n===== MATA KULIAH YANG DIAMBIL =====");
-            System.out.printf("+------------+--------------------+------+\n");
-            System.out.printf("| %-10s | %-18s | %-4s |\n", "Kode", "Nama", "SKS");
-            System.out.printf("+------------+--------------------+------+\n");
-            for (MataKuliah mk : listMatkul) {
-                System.out.printf("| %-10s | %-18s | %-4d |\n", mk.getIdMatkul(), mk.getNama(), mk.getSks());
-            }
-            System.out.printf("+------------+--------------------+------+\n");
-        }
-
-        System.out.printf("\n| Total SKS: %-32s |\n", getJumlahSks() + "/" + sksMaksimal);
-        System.out.printf("+---------------------------------------+\n");
     }
 }

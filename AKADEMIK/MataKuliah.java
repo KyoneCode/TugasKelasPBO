@@ -1,9 +1,17 @@
 // package AKADEMIK;
 
 public class MataKuliah {
+    // atribut
     private String idMatkul;
     private String namaMatkul;
     private int sks;
+
+    // konstruktor
+    public MataKuliah(){
+        idMatkul = "";
+        namaMatkul = "";
+        sks = 0;
+    }
 
     public MataKuliah(String idMatkul, String namaMatkul, int sks) {
         this.idMatkul = idMatkul;
@@ -11,6 +19,7 @@ public class MataKuliah {
         this.sks = sks;
     }
 
+    // getter dan setter
     public String getIdMatkul() {
         return idMatkul;
     }
@@ -22,6 +31,20 @@ public class MataKuliah {
     public int getSks() {
         return sks;
     }
+
+    // setter
+    public void setIdMatkul(String idMatkul) {
+        this.idMatkul = idMatkul;
+    }
+    
+    public void setNama(String namaMatkul) {
+        this.namaMatkul = namaMatkul;
+    }
+    
+    public void setSks(int sks) {
+        this.sks = sks;
+    }
+    
 
     public void printInfo() {
         System.out.printf("\n===== INFORMASI MATA KULIAH =====\n");

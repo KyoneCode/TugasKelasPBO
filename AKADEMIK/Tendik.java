@@ -3,17 +3,23 @@
 public class Tendik extends Pegawai {
     protected String bidang;
 
-    public Tendik(){}
+    // konstruktor
+    public Tendik(){
+        super();
+        bidang = "";
+    }
     
     public Tendik(String nip, String jabatan, String nama, String alamat, String email, String bidang) {
         super(nip, jabatan, nama, alamat, email);
         this.bidang = bidang;
     }
 
+    // getter
     public String getBidang() {
         return bidang;
     }
 
+    // setter
     public void setBidang(String bidang) {
         this.bidang = bidang;
     }
