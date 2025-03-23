@@ -1,13 +1,15 @@
 // package AKADEMIK;
 
+import java.util.ArrayList;
+
 public class Mahasiswa extends Orang {
     // atribut
     private String nim;
     private int angkatan;
     private String prodi;
     private Dosen dosenWali;
-    private Irs irs;
-    private Khs khs;
+    private ArrayList<Irs> listIrs;
+    private ArrayList<Khs> listKhs;
     private final int sksMaksimal = 24;
 
     // konstruktor
@@ -19,8 +21,8 @@ public class Mahasiswa extends Orang {
         this.nim = NIM;
         this.angkatan = angkatan;
         this.prodi = prodi;
-        this.irs = new Irs();
-        this.khs = new Khs();
+        this.listIrs = new ArrayList<>();
+        this.listKhs = new ArrayList<>();
     }
 
     // getter
@@ -44,12 +46,30 @@ public class Mahasiswa extends Orang {
         return dosenWali;
     }
 
-    public Irs getIrs(){
-        return irs;
+    public Irs getIrs(int semester){
+        for (Irs irs : listIrs) {
+            if (irs.getSemester() == semester) {
+                return irs;
+            }
+        }
+        return null;
     }
 
-    public Khs getKhs(){
-        return khs;
+    public Khs getKhs(int semester){
+        for (Khs khs : listKhs) {
+            if (khs.getSemester() == semester) {
+                return khs;
+            }
+        }
+        return null;
+    }
+
+    public int totalSks(){
+        int total = 0;
+        for (Irs irs : listIrs) {
+            total += irs.getJumlahSks();
+        }
+        return total;
     }
 
     // setter
@@ -65,22 +85,13 @@ public class Mahasiswa extends Orang {
         this.dosenWali = dosenWali;
     }
 
-    public void setIrs(Irs irs) {
-        this.irs = irs;
+    public void setIrs(Irs irs){
+        this.listIrs.add(irs);
     }
 
-    public void setKhs(Khs khs) {
-        this.khs = khs;
+    public void setKhs(Khs khs){
+        this.listKhs.add(khs);
     }
-
-    // // method lain
-    // public void addMatkul(MataKuliah mk) {
-    //     if (getJumlahSks() + mk.getSks() > sksMaksimal) {
-    //         throw new SksMelebihiBatasException("Gagal menambahkan " + mk.getNama() + ". Total SKS melebihi batas (" + sksMaksimal + " SKS).");
-    //     }
-    //     listMatkul.add(mk);
-    //     System.out.println("Mata Kuliah " + mk.getNama() + " berhasil ditambahkan untuk " + nama);
-    // }
 
     @Override
     public void printInfo() {
@@ -93,7 +104,7 @@ public class Mahasiswa extends Orang {
         System.out.printf("| %-15s | %-26s |\n", "Angkatan", angkatan);
         System.out.printf("| %-15s | %-26s |\n", "Program Studi", prodi);
         System.out.printf("| %-15s | %-26s |\n", "Dosen Wali", dosenWali);
-        System.out.printf("| %-15s | %-26s |\n", "Total SKS", getIrs().getJumlahSks() + "/" + sksMaksimal);
+        System.out.printf("| %-15s | %-26s |\n", "Total SKS", this.totalSks());
         System.out.printf("+-----------------+----------------------------+\n");
     }
 }

@@ -1,17 +1,50 @@
+
 import java.util.ArrayList;
+import java.util.List;
+
 
 public class Khs {
     // atribut
+    private Mahasiswa mahasiswa;
+    private int semester;
+    private ArrayList<MataKuliahNilai> mataKuliahNilaiList;
+    private int jumlahSks;
     private Irs IRS;
-    private ArrayList<Character> nilaiList;
     
     // konstruktor
     public Khs() {
+        this.mahasiswa = new Mahasiswa();
+        this.semester = 0;
+        this.mataKuliahNilaiList = new ArrayList<>();
+        this.jumlahSks = 0;
         this.IRS = new Irs();
-        this.nilaiList = new ArrayList<>();
+    }
+
+    public Khs(Irs irs) {
+        this.mahasiswa = irs.getMahasiswa();
+        this.semester = irs.getSemester();
+        this.mataKuliahNilaiList = new ArrayList<>(); // list matakuliah dan nilainya
+        this.jumlahSks = irs.getJumlahSks();
+        this.IRS = irs;
     }
 
     // getter dan setter
+    public int getSemester() {
+        return semester;
+    }
+
+    public Mahasiswa getMahasiswa() {
+        return mahasiswa;
+    }
+
+    public int getJumlahSks() {
+        return jumlahSks;
+    }
+
+    public List<MataKuliahNilai> getMataKuliahNilaiList() {
+        return new ArrayList<>(mataKuliahNilaiList);
+    }
+
     public Irs getIRS() {
         return IRS;
     }
@@ -20,36 +53,25 @@ public class Khs {
         this.IRS = IRS;
     }
 
-    public ArrayList<Character> getNilaiList() {
-        return nilaiList;
-    }
-
-    public void setNilaiList(ArrayList<Character> nilaiList) {
-        this.nilaiList = nilaiList;
-    }
-
-    public Khs(Irs irs) {
-        this.IRS = irs;
-        this.nilaiList = new ArrayList<>();
-    }
-
     public void tambahNilai(MataKuliah mataKuliah, char nilai) {
         try {
             if (mataKuliah == null) {
                 throw new ExceptionIRS("Mata kuliah tidak valid!");
             }
-    
+
             if (!IRS.getMataKuliahList().contains(mataKuliah)) {
                 throw new ExceptionIRS("Mahasiswa belum mengambil mata kuliah " + mataKuliah.getNama() + " dalam IRS.");
             }
-    
+
             if ("ABCDE".indexOf(nilai) == -1) {
-                throw new ExceptionIRS("Nilai tidak valid! Harus berupa A, B, C, D, atau F.");
+                throw new ExceptionIRS("Nilai tidak valid! Harus berupa A, B, C, D, atau E.");
             }
-    
-            nilaiList.add(nilai);
+
+            mataKuliahNilaiList.add(new MataKuliahNilai(mataKuliah, nilai));
+            System.out.println("Isi mataKuliahNilaiList:");
+            
             System.out.println("Nilai " + nilai + " berhasil ditambahkan untuk mata kuliah: " + mataKuliah.getNama());
-        
+
         } catch (ExceptionIRS e) {
             System.out.println("Error: " + e.getMessage());
         } catch (Exception e) {
@@ -61,14 +83,14 @@ public class Khs {
         System.out.println("=====================================");
         System.out.println("         INFORMASI KHS MAHASISWA     ");
         System.out.println("=====================================");
-        System.out.println("Nama         : " + IRS.getMahasiswa().getNama());
-        System.out.println("NIM          : " + IRS.getMahasiswa().getNim());
+        System.out.println("Nama         : " + getMahasiswa().getNama());
+        System.out.println("NIM          : " + getMahasiswa().getNim());
         System.out.println("-------------------------------------");
         System.out.printf("%-25s | %-5s\n", "Mata Kuliah", "Nilai");
         System.out.println("-------------------------------------");
 
-        for (int i = 0; i < IRS.getMataKuliahList().size() - 1; i++) {
-            System.out.printf("%-25s | %-5s\n", IRS.getMataKuliahList().get(i).getNama(), nilaiList.get(i));
+        for (MataKuliahNilai mkNilai : mataKuliahNilaiList) {
+            System.out.printf("%-25s | %-5s\n", mkNilai.getMataKuliah().getNama(), mkNilai.getNilai());
         }
         System.out.println("-------------------------------------");
     }

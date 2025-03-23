@@ -56,7 +56,7 @@ public class Main {
         mhs2.setDosenWali(dosen2);
 
         //Mahasiswa mengisi Irs
-        Irs irsMhs1 = new Irs(mhs1);
+        Irs irsMhs1 = new Irs(1, mhs1);
         irsMhs1.tambahMataKuliah(mk1);
         mhs1.setIrs(irsMhs1);
         mhs1.printInfo();
@@ -76,7 +76,7 @@ public class Main {
         mhs1.printInfo();
 
         //Cetak IRS 
-        mhs1.getIrs().cetakIRS();
+        mhs1.getIrs(1);
 
         //buat KHS
         Khs khsMhs1 = new Khs(irsMhs1);
@@ -87,9 +87,5 @@ public class Main {
 
         // Cetak KHS mahasiswa
         khsMhs1.cetakKHS();
-
-        //End Main
-        System.out.println("\nIni sudah selesai");
-        
     }
 }
