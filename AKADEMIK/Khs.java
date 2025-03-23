@@ -23,7 +23,7 @@ public class Khs {
     public Khs(Irs irs) {
         this.mahasiswa = irs.getMahasiswa();
         this.semester = irs.getSemester();
-        this.mataKuliahNilaiList = new ArrayList<>();
+        this.mataKuliahNilaiList = new ArrayList<>(); // list matakuliah dan nilainya
         this.jumlahSks = irs.getJumlahSks();
         this.IRS = irs;
     }
@@ -64,7 +64,7 @@ public class Khs {
             }
 
             if ("ABCDE".indexOf(nilai) == -1) {
-                throw new ExceptionIRS("Nilai tidak valid! Harus berupa A, B, C, D, atau F.");
+                throw new ExceptionIRS("Nilai tidak valid! Harus berupa A, B, C, D, atau E.");
             }
 
             mataKuliahNilaiList.add(new MataKuliahNilai(mataKuliah, nilai));
