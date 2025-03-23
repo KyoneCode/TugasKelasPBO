@@ -3,19 +3,29 @@ import java.util.List;
 
 public class Irs{
     private Mahasiswa mahasiswa;
-    private List<MataKuliah> mataKuliahList;
+    private int semester;
+    private ArrayList<MataKuliah> mataKuliahList;
+    private int jumlahSks;
     
     // konstruktor
     public Irs(){
         this.mahasiswa = new Mahasiswa();
+        this.semester = 0;
         this.mataKuliahList = new ArrayList<>();
+        this.jumlahSks = 0;
     }
-    public Irs(Mahasiswa mahasiswa) {
+    public Irs(int semester, Mahasiswa mahasiswa) {
         this.mahasiswa = mahasiswa;
+        this.semester = semester;
         this.mataKuliahList = new ArrayList<>();
+        this.jumlahSks = 0;
     }
  
     // getter
+    public int getSemester(){
+        return semester;
+    }
+
     public List<MataKuliah> getMataKuliahList() {
         return new ArrayList<>(mataKuliahList);
     }
@@ -23,6 +33,10 @@ public class Irs{
     public Mahasiswa getMahasiswa(){
         return mahasiswa;
     }
+
+    public int getJumlahSks() {
+        return jumlahSks;
+    }   
 
     // setter
     public void setMataKuliahList(List<MataKuliah> mataKuliahList) {
@@ -35,7 +49,8 @@ public class Irs{
     
     // method yang lain
     public void tambahMataKuliah(MataKuliah mataKuliah) throws ExceptionIRS{
-        if (mataKuliahList == null || mataKuliahList.isEmpty()) { 
+        if (mataKuliahList == null || mataKuliahList.isEmpty() || jumlahSks == 0) { 
+            jumlahSks += mataKuliah.getSks();
             mataKuliahList.add(mataKuliah);
         }
         else { 
@@ -43,9 +58,10 @@ public class Irs{
                 throw new ExceptionIRS("Mata Kuliah sudah ditembahkan");
             }
 
-            if (mahasiswa.getIrs().getJumlahSks() + mataKuliah.getSks() > mahasiswa.getSksMaksimal()){
+            if (this.getJumlahSks() + mataKuliah.getSks() > mahasiswa.getSksMaksimal()){
                 throw new SksMelebihiBatasException("Jatah SKS sudah penuh");
             }
+            jumlahSks += mataKuliah.getSks();
             mataKuliahList.add(mataKuliah);
         }         
     }
@@ -85,17 +101,4 @@ public class Irs{
         }
     }
     
-
-    public int getJumlahSks() {
-        if (mataKuliahList == null || mataKuliahList.isEmpty()) {
-            return 0;
-        }
-        int totalSks = 0;
-        for (MataKuliah mk : mataKuliahList) {
-            if (mk != null) {
-                totalSks += mk.getSks();
-            }
-        }
-        return totalSks;
-    }
 }
