@@ -87,9 +87,5 @@ public class Main {
 
         // Cetak KHS mahasiswa
         khsMhs1.cetakKHS();
-
-        //End Main
-        System.out.println("\nIni sudah selesai");
-        
     }
 }
